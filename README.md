@@ -8,20 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nautilus+Pompilius&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for Theming */
-        :root {
-            --primary: #6A1B9A;
-            --secondary: #8E24AA;
-            --accent: #9C27B0;
-            --background: #FFF8F0;
-            --text: #333333;
-            --light-text: #FFFFFF;
-            --header-bg: #FFFFFF;
-            --card-bg: #FFFFFF;
-            --shadow: rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-            --footer-bg: #6A1B9A;
-        }
+       
 
         .dark-theme {
             --primary: #8E24AA;
