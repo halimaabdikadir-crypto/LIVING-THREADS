@@ -65,7 +65,7 @@
             padding: 0 15px;
         }
 
-        /* Header Styles - Updated */
+        /* Header Styles */
         header {
             background-color: var(--header-bg);
             padding: 15px 0;
@@ -79,7 +79,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px; /* Fixed height for header */
+            height: 60px;
         }
 
         .header-left {
@@ -99,14 +99,14 @@
         .logo h1 {
             font-size: 1.8rem;
             color: var(--primary);
-            line-height: 1; /* Ensure text doesn't affect height */
+            line-height: 1;
             font-family: 'Merienda', cursive;
         }
 
         .logo-icon {
-            font-size: 2rem;
+            font-size: 2.5rem; /* Increased size */
             color: var(--primary);
-            line-height: 1; /* Ensure icon doesn't affect height */
+            line-height: 1;
         }
 
         /* Hamburger Menu */
@@ -597,6 +597,11 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px var(--shadow);
             cursor: pointer;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
 
         .topic-card:hover {
@@ -611,6 +616,11 @@
         .topic-card p {
             font-family: 'Nautilus Pompilius', cursive;
             font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .topic-card .btn-purple {
+            margin-top: auto;
         }
 
         .discussion-form {
@@ -661,6 +671,12 @@
             font-size: 0.9rem;
             color: #777;
             font-family: 'Nautilus Pompilius', cursive;
+        }
+
+        .discussion-topic {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
         }
 
         /* Chatbot */
@@ -830,6 +846,15 @@
             display: none;
         }
 
+        /* Error Message */
+        .error-message {
+            color: #ff3860;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+            font-family: 'Nautilus Pompilius', cursive;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
@@ -924,10 +949,12 @@
                     <div class="form-group">
                         <label for="email" data-lang="en">Email Address</label>
                         <input type="email" id="email" class="form-control" placeholder="Enter your email" data-placeholder-en="Enter your email" data-placeholder-sw="Weka barua pepe yako" data-placeholder-maa="Ingiza enkop email">
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
                     </div>
                     <div class="form-group">
                         <label for="password" data-lang="en">Password</label>
                         <input type="password" id="password" class="form-control" placeholder="Enter your password" data-placeholder-en="Enter your password" data-placeholder-sw="Weka nenosiri lako" data-placeholder-maa="Ingiza enkop password">
+                        <div class="error-message" id="passwordError">Password is required</div>
                     </div>
                     <button type="submit" class="btn btn-block">Login</button>
                 </form>
@@ -959,14 +986,17 @@
                     <div class="form-group">
                         <label for="signupEmail" data-lang="en">Email Address</label>
                         <input type="email" id="signupEmail" class="form-control" placeholder="Enter your email" data-placeholder-en="Enter your email" data-placeholder-sw="Weka barua pepe yako" data-placeholder-maa="Ingiza enkop email">
+                        <div class="error-message" id="signupEmailError">Please enter a valid email address</div>
                     </div>
                     <div class="form-group">
                         <label for="signupPassword" data-lang="en">Password</label>
                         <input type="password" id="signupPassword" class="form-control" placeholder="Create a password" data-placeholder-en="Create a password" data-placeholder-sw="Tengeneza nenosiri" data-placeholder-maa="Enkarna password">
+                        <div class="error-message" id="signupPasswordError">Password must be at least 6 characters</div>
                     </div>
                     <div class="form-group">
                         <label for="confirmPassword" data-lang="en">Confirm Password</label>
                         <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" data-placeholder-en="Confirm your password" data-placeholder-sw="Thibitisha nenosiri lako" data-placeholder-maa="Thibitisha enkop password">
+                        <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
                     </div>
                     <button type="submit" class="btn btn-block">Sign Up</button>
                 </form>
@@ -1145,24 +1175,32 @@
                 <div class="topic-card">
                     <h3 data-lang="en">Cultural Practices & Traditions</h3>
                     <p data-lang="en">Discuss traditional ceremonies, songs, and daily practices</p>
+                    <button class="btn-purple join-topic-btn" data-topic="Cultural Practices">Join Discussion</button>
                 </div>
                 <div class="topic-card">
                     <h3 data-lang="en">Community Values & Respect</h3>
                     <p data-lang="en">Share insights on Maasai values and their modern relevance</p>
+                    <button class="btn-purple join-topic-btn" data-topic="Community Values">Join Discussion</button>
                 </div>
                 <div class="topic-card">
                     <h3 data-lang="en">Youth & Cultural Learning</h3>
                     <p data-lang="en">How can young people stay connected to their heritage?</p>
+                    <button class="btn-purple join-topic-btn" data-topic="Youth Learning">Join Discussion</button>
                 </div>
                 <div class="topic-card">
                     <h3 data-lang="en">Elders' Wisdom & Oral Traditions</h3>
                     <p data-lang="en">Stories and knowledge passed down through generations</p>
+                    <button class="btn-purple join-topic-btn" data-topic="Elders Wisdom">Join Discussion</button>
                 </div>
             </div>
             
             <div class="discussion-form" id="discussionForm" style="display: none;">
                 <h2 data-lang="en">Share Your Thoughts</h2>
                 <form id="newDiscussion">
+                    <div class="form-group">
+                        <label for="discussionTopic" data-lang="en">Discussion Topic</label>
+                        <input type="text" id="discussionTopic" class="form-control" readonly>
+                    </div>
                     <div class="form-group">
                         <input type="text" id="discussionTitle" class="form-control" placeholder="Discussion title" data-placeholder-en="Discussion title" data-placeholder-sw="Kichwa cha mjadala" data-placeholder-maa="Enkutuk enkitokitin">
                     </div>
@@ -1196,7 +1234,7 @@
             </div>
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot-message">
-                    Supa gorgeous, how can I help you today?
+                    Hello! How can I help you learn about Maasai culture today?
                 </div>
             </div>
             <div class="chatbot-input">
@@ -1266,9 +1304,19 @@
         const mainFooter = document.getElementById('main-footer');
         const joinDiscussionBtn = document.getElementById('joinDiscussionBtn');
         const discussionForm = document.getElementById('discussionForm');
+        const joinTopicButtons = document.querySelectorAll('.join-topic-btn');
+        const discussionTopic = document.getElementById('discussionTopic');
+
+        // Error message elements
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const signupEmailError = document.getElementById('signupEmailError');
+        const signupPasswordError = document.getElementById('signupPasswordError');
+        const confirmPasswordError = document.getElementById('confirmPasswordError');
 
         // Current language
         let currentLang = 'en';
+        let isLoggedIn = false;
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
@@ -1277,6 +1325,16 @@
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
                 themeToggle.textContent = '☀️';
+            }
+            
+            // Check if user is logged in
+            const savedLogin = localStorage.getItem('isLoggedIn');
+            if (savedLogin === 'true') {
+                isLoggedIn = true;
+                // Show home page instead of login
+                document.getElementById('login').classList.remove('active-page');
+                document.getElementById('home').classList.add('active-page');
+                updateFooter();
             }
             
             // Load saved activities
@@ -1295,11 +1353,39 @@
             updateFooter();
         });
 
+        // Email validation function
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
         // Join Discussion Button
         joinDiscussionBtn.addEventListener('click', function() {
+            if (!isLoggedIn) {
+                alert('Please log in to join discussions');
+                return;
+            }
+            
+            discussionTopic.value = 'General Discussion';
             discussionForm.style.display = 'block';
             joinDiscussionBtn.style.display = 'none';
             discussionForm.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Handle topic-specific join buttons
+        joinTopicButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (!isLoggedIn) {
+                    alert('Please log in to join discussions');
+                    return;
+                }
+                
+                const topic = this.getAttribute('data-topic');
+                discussionTopic.value = topic;
+                discussionForm.style.display = 'block';
+                joinDiscussionBtn.style.display = 'none';
+                discussionForm.scrollIntoView({ behavior: 'smooth' });
+            });
         });
 
         // Update footer based on current page
@@ -1341,7 +1427,14 @@
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+                
+                // Check if user is logged in for non-login pages
                 const targetPage = this.getAttribute('data-page');
+                if (targetPage !== 'login' && !isLoggedIn) {
+                    alert('Please log in to access this page');
+                    return;
+                }
+                
                 const targetSection = this.getAttribute('data-section');
                 
                 // Hide all pages
@@ -1451,14 +1544,86 @@
         // Form Submissions
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Login functionality would be implemented here');
-            // In a real app, you would validate and send to a server
+            
+            // Reset error messages
+            emailError.style.display = 'none';
+            passwordError.style.display = 'none';
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            let isValid = true;
+            
+            // Validate email
+            if (!isValidEmail(email)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length === 0) {
+                passwordError.style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Simulate successful login
+                isLoggedIn = true;
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                // Redirect to home page
+                pages.forEach(page => {
+                    page.classList.remove('active-page');
+                });
+                document.getElementById('home').classList.add('active-page');
+                updateFooter();
+            }
         });
 
         signupForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Signup functionality would be implemented here');
-            // In a real app, you would validate and send to a server
+            
+            // Reset error messages
+            signupEmailError.style.display = 'none';
+            signupPasswordError.style.display = 'none';
+            confirmPasswordError.style.display = 'none';
+            
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            let isValid = true;
+            
+            // Validate email
+            if (!isValidEmail(email)) {
+                signupEmailError.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length < 6) {
+                signupPasswordError.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate password confirmation
+            if (password !== confirmPassword) {
+                confirmPasswordError.style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Simulate successful signup and login
+                isLoggedIn = true;
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                // Redirect to home page
+                pages.forEach(page => {
+                    page.classList.remove('active-page');
+                });
+                document.getElementById('home').classList.add('active-page');
+                updateFooter();
+            }
         });
 
         // Chatbot Functionality
@@ -1594,24 +1759,27 @@
         // Forum Discussions
         newDiscussion.addEventListener('submit', function(e) {
             e.preventDefault();
+            const topic = document.getElementById('discussionTopic').value;
             const title = document.getElementById('discussionTitle').value;
             const content = document.getElementById('discussionContent').value;
             const anonymous = document.getElementById('anonymousPost').checked;
             
             if (title.trim() === '' || content.trim() === '') return;
             
-            addDiscussionToList(title, content, anonymous);
+            addDiscussionToList(topic, title, content, anonymous);
             
             // Reset form
             document.getElementById('discussionTitle').value = '';
             document.getElementById('discussionContent').value = '';
             document.getElementById('anonymousPost').checked = false;
+            discussionForm.style.display = 'none';
+            joinDiscussionBtn.style.display = 'block';
             
             // Save discussions
             saveDiscussions();
         });
 
-        function addDiscussionToList(title, content, anonymous) {
+        function addDiscussionToList(topic, title, content, anonymous) {
             const discussionDiv = document.createElement('div');
             discussionDiv.classList.add('discussion-item');
             
@@ -1622,6 +1790,9 @@
                 <div class="discussion-meta">
                     <span>${author}</span>
                     <span>${timestamp}</span>
+                </div>
+                <div class="discussion-topic">
+                    <strong>Topic:</strong> ${topic}
                 </div>
                 <h3>${title}</h3>
                 <p>${content}</p>
@@ -1634,12 +1805,14 @@
             const discussions = [];
             discussionsContainer.querySelectorAll('.discussion-item').forEach(item => {
                 const meta = item.querySelector('.discussion-meta');
+                const topic = item.querySelector('.discussion-topic').textContent.replace('Topic:', '').trim();
                 const author = meta.children[0].textContent;
                 const date = meta.children[1].textContent;
                 const title = item.querySelector('h3').textContent;
                 const content = item.querySelector('p').textContent;
                 
                 discussions.push({
+                    topic: topic,
                     author: author,
                     date: date,
                     title: title,
@@ -1655,6 +1828,7 @@
                 const discussions = JSON.parse(savedDiscussions);
                 discussions.forEach(discussion => {
                     addDiscussionToList(
+                        discussion.topic,
                         discussion.title, 
                         discussion.content, 
                         discussion.author === 'Anonymous'
