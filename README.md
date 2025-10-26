@@ -51,6 +51,22 @@
             line-height: 1.6;
             overflow-x: hidden;
             font-size: 18px;
+            position: relative;
+        }
+
+        /* Decorative Hearts */
+        .heart {
+            position: absolute;
+            font-size: 18px;
+            color: var(--primary);
+            opacity: 0.3;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -97,14 +113,14 @@
         }
 
         .logo h1 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--primary);
             line-height: 1;
             font-family: 'Merienda', cursive;
         }
 
         .logo-icon {
-            font-size: 2.5rem; /* Increased size */
+            font-size: 3.2rem;
             color: var(--primary);
             line-height: 1;
         }
@@ -153,9 +169,26 @@
         }
 
         .header-icon {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             cursor: pointer;
             color: var(--text);
+            position: relative;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
         }
 
         .theme-toggle {
@@ -215,6 +248,7 @@
             display: none;
             min-height: calc(100vh - 120px);
             padding: 40px 0;
+            position: relative;
         }
 
         .active-page {
@@ -230,6 +264,8 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px var(--shadow);
             animation: slideIn 0.5s ease;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes slideIn {
@@ -377,6 +413,7 @@
             text-align: center;
             padding: 60px 0;
             animation: fadeIn 1s ease;
+            position: relative;
         }
 
         @keyframes fadeIn {
@@ -411,6 +448,7 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px var(--shadow);
             text-align: center;
+            position: relative;
         }
 
         .feature-card:hover {
@@ -439,6 +477,7 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px var(--shadow);
             margin-top: 40px;
+            position: relative;
         }
 
         .impact-tracker h2 {
@@ -462,7 +501,7 @@
         }
 
         .impact-item {
-            padding: 10px 15px;
+            padding: 12px 15px;
             background-color: var(--background);
             margin-bottom: 10px;
             border-radius: 5px;
@@ -475,6 +514,7 @@
         /* Know More Page */
         .cultural-section {
             margin-bottom: 40px;
+            position: relative;
         }
 
         .cultural-section h2 {
@@ -503,6 +543,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px var(--shadow);
+            position: relative;
         }
 
         .media-item img, .media-item video {
@@ -565,6 +606,7 @@
             margin-bottom: 30px;
             box-shadow: 0 5px 15px var(--shadow);
             text-align: center;
+            position: relative;
         }
 
         .forum-intro h1 {
@@ -602,6 +644,7 @@
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
+            position: relative;
         }
 
         .topic-card:hover {
@@ -629,6 +672,7 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px var(--shadow);
             margin-bottom: 30px;
+            position: relative;
         }
 
         .discussion-form h2 {
@@ -641,6 +685,7 @@
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 5px 15px var(--shadow);
+            position: relative;
         }
 
         .discussions-container h2 {
@@ -657,6 +702,7 @@
         .discussion-item h3 {
             font-family: 'Merienda', cursive;
             margin-bottom: 10px;
+            font-size: 1.3rem;
         }
 
         .discussion-item p {
@@ -668,7 +714,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #777;
             font-family: 'Nautilus Pompilius', cursive;
         }
@@ -677,6 +723,7 @@
             font-weight: bold;
             color: var(--primary);
             margin-bottom: 5px;
+            font-size: 1.1rem;
         }
 
         /* Chatbot */
@@ -855,6 +902,51 @@
             font-family: 'Nautilus Pompilius', cursive;
         }
 
+        /* Active Discussion Styles */
+        .active-discussion {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .active-discussion h2 {
+            font-family: 'Merienda', cursive;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .discussion-thread {
+            margin-top: 20px;
+        }
+
+        .thread-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .thread-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #777;
+            font-family: 'Nautilus Pompilius', cursive;
+        }
+
+        .thread-content {
+            font-family: 'Nautilus Pompilius', cursive;
+            font-size: 18px;
+        }
+
+        .thread-reply {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
@@ -886,6 +978,9 @@
     </style>
 </head>
 <body>
+    <!-- Decorative Hearts -->
+    <div id="hearts-container"></div>
+
     <!-- Header for Home, Know More, and Forum Pages -->
     <header id="main-header">
         <div class="container header-content">
@@ -906,7 +1001,9 @@
             
             <div class="header-right">
                 <i class="fas fa-user-circle header-icon"></i>
-                <i class="fas fa-bell header-icon"></i>
+                <i class="fas fa-bell header-icon" id="notificationIcon">
+                    <span class="notification-badge">2</span>
+                </i>
                 <button class="theme-toggle" id="themeToggle">🌙</button>
             </div>
         </div>
@@ -923,12 +1020,12 @@
             <li><a href="#" class="nav-link" data-page="knowmore" data-section="ceremonies">Ceremonies</a></li>
             <li><a href="#" class="nav-link" data-page="knowmore" data-section="daily-life">Daily Life</a></li>
             <li><a href="#" class="nav-link" data-page="knowmore" data-section="faq">FAQs</a></li>
-            <li><a href="#">Cultural Resources</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#" class="nav-link" data-page="resources">Cultural Resources</a></li>
+            <li><a href="#" class="nav-link" data-page="events">Events</a></li>
+            <li><a href="#" class="nav-link" data-page="gallery">Gallery</a></li>
+            <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            <li><a href="#" class="nav-link" data-page="support">Support</a></li>
+            <li><a href="#" class="nav-link" data-page="privacy">Privacy Policy</a></li>
         </ul>
     </nav>
 
@@ -1020,16 +1117,20 @@
                     <div class="feature-icon">🎵</div>
                     <h3 data-lang="en">Traditional Songs</h3>
                     <p data-lang="en">Discover and learn traditional Maasai songs with lyrics and meanings.</p>
+                    <a href="https://www.boomplay.com/playlists/115503270" target="_blank" class="btn" style="margin-top: 15px;">Listen Now</a>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📖</div>
                     <h3 data-lang="en">Oral Stories</h3>
                     <p data-lang="en">Listen to elders narrate stories passed down through generations.</p>
+                    <a href="https://www.youtube.com/watch?v=example1" target="_blank" class="btn" style="margin-top: 15px;">Listen to Stories</a>
+                    <a href="https://www.youtube.com/watch?v=example2" target="_blank" class="btn" style="margin-top: 10px;">More Stories</a>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">👥</div>
                     <h3 data-lang="en">Community Forum</h3>
                     <p data-lang="en">Connect with other Maasai students and share cultural knowledge.</p>
+                    <a href="#" class="btn nav-link" data-page="forum" style="margin-top: 15px;">Join Forum</a>
                 </div>
             </div>
             
@@ -1043,11 +1144,27 @@
                 </div>
                 
                 <div id="impactStats">
-                    <p data-lang="en">Total Activities: <span id="totalActivities">0</span></p>
+                    <p data-lang="en">Total Activities: <span id="totalActivities">4</span></p>
                 </div>
                 
                 <ul class="impact-list" id="activitiesList">
-                    <!-- Activities will be added here dynamically -->
+                    <!-- Pre-filled activities -->
+                    <li class="impact-item">
+                        <span>Learned traditional Maasai greeting</span>
+                        <button class="delete-activity">×</button>
+                    </li>
+                    <li class="impact-item">
+                        <span>Shared a Maasai folk tale with friends</span>
+                        <button class="delete-activity">×</button>
+                    </li>
+                    <li class="impact-item">
+                        <span>Practiced traditional beadwork patterns</span>
+                        <button class="delete-activity">×</button>
+                    </li>
+                    <li class="impact-item">
+                        <span>Listened to Maasai ceremonial songs</span>
+                        <button class="delete-activity">×</button>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -1217,9 +1334,99 @@
                 </form>
             </div>
             
+            <!-- Active Discussion Section -->
+            <div class="active-discussion" id="activeDiscussion" style="display: none;">
+                <h2 id="activeDiscussionTitle">Active Discussion</h2>
+                <div class="discussion-thread" id="discussionThread">
+                    <!-- Thread items will be added here -->
+                </div>
+                <div class="thread-reply">
+                    <h3>Add Your Response</h3>
+                    <form id="threadReplyForm">
+                        <div class="form-group">
+                            <textarea id="replyContent" class="form-control" rows="3" placeholder="Type your response here..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="anonymousReply">
+                                <span data-lang="en">Reply anonymously</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn">Post Reply</button>
+                    </form>
+                </div>
+            </div>
+            
             <div class="discussions-container" id="discussionsContainer">
                 <h2 data-lang="en">Recent Discussions</h2>
-                <!-- Discussions will be added here dynamically -->
+                <!-- Pre-filled discussions -->
+                <div class="discussion-item">
+                    <div class="discussion-meta">
+                        <span>Sarah K.</span>
+                        <span>2 days ago</span>
+                    </div>
+                    <div class="discussion-topic">
+                        <strong>Topic:</strong> Cultural Practices
+                    </div>
+                    <h3>Learning traditional Maasai songs</h3>
+                    <p>I've been trying to learn some traditional Maasai songs from my grandmother. Does anyone have tips for remembering the lyrics and melodies? They're so beautiful but quite different from modern music.</p>
+                    <button class="btn-purple view-discussion-btn" style="margin-top: 10px;" data-discussion="songs">View Discussion</button>
+                </div>
+                <div class="discussion-item">
+                    <div class="discussion-meta">
+                        <span>Anonymous</span>
+                        <span>5 days ago</span>
+                    </div>
+                    <div class="discussion-topic">
+                        <strong>Topic:</strong> Youth Learning
+                    </div>
+                    <h3>Balancing modern life with cultural traditions</h3>
+                    <p>As a university student living in the city, I sometimes struggle to maintain connection with my Maasai heritage. What are some ways you all stay connected to our culture while pursuing education and careers?</p>
+                    <button class="btn-purple view-discussion-btn" style="margin-top: 10px;" data-discussion="youth">View Discussion</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Pages (Placeholders) -->
+        <section id="resources" class="page">
+            <div class="hero">
+                <h1>Cultural Resources</h1>
+                <p>Access a wealth of resources about Maasai culture, including books, documentaries, and educational materials.</p>
+            </div>
+        </section>
+
+        <section id="events" class="page">
+            <div class="hero">
+                <h1>Events</h1>
+                <p>Stay updated on upcoming cultural events, ceremonies, and gatherings in the Maasai community.</p>
+            </div>
+        </section>
+
+        <section id="gallery" class="page">
+            <div class="hero">
+                <h1>Gallery</h1>
+                <p>Explore our collection of images and videos showcasing Maasai culture, traditions, and daily life.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <div class="hero">
+                <h1>Contact Us</h1>
+                <p>Get in touch with the Living Threads team for questions, suggestions, or support.</p>
+            </div>
+        </section>
+
+        <section id="support" class="page">
+            <div class="hero">
+                <h1>Support</h1>
+                <p>Find help and resources for using the Living Threads platform.</p>
+            </div>
+        </section>
+
+        <section id="privacy" class="page">
+            <div class="hero">
+                <h1>Privacy Policy</h1>
+                <p>Learn about how we protect your data and privacy on the Living Threads platform.</p>
             </div>
         </section>
     </main>
@@ -1234,7 +1441,7 @@
             </div>
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot-message">
-                    Hello! How can I help you learn about Maasai culture today?
+                    Hello! I'm here to help you learn about Maasai culture. You can ask me about songs, ceremonies, traditions, or anything else you're curious about.
                 </div>
             </div>
             <div class="chatbot-input">
@@ -1253,7 +1460,7 @@
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-instariam"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
@@ -1306,6 +1513,13 @@
         const discussionForm = document.getElementById('discussionForm');
         const joinTopicButtons = document.querySelectorAll('.join-topic-btn');
         const discussionTopic = document.getElementById('discussionTopic');
+        const heartsContainer = document.getElementById('hearts-container');
+        const notificationIcon = document.getElementById('notificationIcon');
+        const viewDiscussionBtns = document.querySelectorAll('.view-discussion-btn');
+        const activeDiscussion = document.getElementById('activeDiscussion');
+        const activeDiscussionTitle = document.getElementById('activeDiscussionTitle');
+        const discussionThread = document.getElementById('discussionThread');
+        const threadReplyForm = document.getElementById('threadReplyForm');
 
         // Error message elements
         const emailError = document.getElementById('emailError');
@@ -1337,6 +1551,12 @@
                 updateFooter();
             }
             
+            // Create decorative hearts
+            createHearts();
+            
+            // Set up notification badge
+            setupNotifications();
+            
             // Load saved activities
             loadActivities();
             
@@ -1352,6 +1572,37 @@
             // Set footer visibility based on current page
             updateFooter();
         });
+
+        // Create decorative hearts
+        function createHearts() {
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '♥';
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                heart.style.left = `${left}%`;
+                heart.style.top = `${top}%`;
+                
+                // Random animation delay
+                const delay = Math.random() * 15;
+                heart.style.animationDelay = `${delay}s`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Set up notifications
+        function setupNotifications() {
+            // Show notification badge with 2 notifications
+            const notificationBadge = notificationIcon.querySelector('.notification-badge');
+            notificationBadge.textContent = '2';
+            notificationBadge.style.display = 'flex';
+        }
 
         // Email validation function
         function isValidEmail(email) {
@@ -1387,6 +1638,144 @@
                 discussionForm.scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // View Discussion Buttons
+        viewDiscussionBtns.forEach(button => {
+            button.addEventListener('click', function() {
+                if (!isLoggedIn) {
+                    alert('Please log in to view discussions');
+                    return;
+                }
+                
+                const discussionType = this.getAttribute('data-discussion');
+                showActiveDiscussion(discussionType);
+            });
+        });
+
+        // Show active discussion thread
+        function showActiveDiscussion(type) {
+            // Hide other forum elements
+            document.querySelector('.forum-intro').style.display = 'none';
+            document.querySelector('.forum-topics').style.display = 'none';
+            document.getElementById('discussionForm').style.display = 'none';
+            document.getElementById('discussionsContainer').style.display = 'none';
+            
+            // Show active discussion
+            activeDiscussion.style.display = 'block';
+            
+            // Set discussion title and content based on type
+            if (type === 'songs') {
+                activeDiscussionTitle.textContent = 'Learning traditional Maasai songs';
+                discussionThread.innerHTML = `
+                    <div class="thread-item">
+                        <div class="thread-meta">
+                            <span>Sarah K.</span>
+                            <span>2 days ago</span>
+                        </div>
+                        <div class="thread-content">
+                            I've been trying to learn some traditional Maasai songs from my grandmother. Does anyone have tips for remembering the lyrics and melodies? They're so beautiful but quite different from modern music.
+                        </div>
+                    </div>
+                    <div class="thread-item">
+                        <div class="thread-meta">
+                            <span>James M.</span>
+                            <span>1 day ago</span>
+                        </div>
+                        <div class="thread-content">
+                            I found that recording my grandmother singing and then practicing along with the recording really helped me. Also, try to understand the meaning behind the lyrics - it makes them easier to remember!
+                        </div>
+                    </div>
+                    <div class="thread-item">
+                        <div class="thread-meta">
+                            <span>Naomi S.</span>
+                            <span>12 hours ago</span>
+                        </div>
+                        <div class="thread-content">
+                            I've been learning through the Living Threads app. They have some great resources with both audio and translations. The repetition method works well for me - just listening to the same song multiple times until it sticks.
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'youth') {
+                activeDiscussionTitle.textContent = 'Balancing modern life with cultural traditions';
+                discussionThread.innerHTML = `
+                    <div class="thread-item">
+                        <div class="thread-meta">
+                            <span>Anonymous</span>
+                            <span>5 days ago</span>
+                        </div>
+                        <div class="thread-content">
+                            As a university student living in the city, I sometimes struggle to maintain connection with my Maasai heritage. What are some ways you all stay connected to our culture while pursuing education and careers?
+                        </div>
+                    </div>
+                    <div class="thread-item">
+                        <div class="thread-meta">
+                            <span>David L.</span>
+                            <span>4 days ago</span>
+                        </div>
+                        <div class="thread-content">
+                            I make sure to call my grandparents regularly and ask them to tell me stories. I also try to cook traditional foods on weekends and wear Maasai jewelry occasionally to feel connected.
+                        </div>
+                    </div>
+                    <div class="thread-item">
+                        <div class="thread-meta">
+                            <span>Grace W.</span>
+                            <span>3 days ago</span>
+                        </div>
+                        <div class="thread-content">
+                            I joined a Maasai student association at my university. We meet monthly to share stories, practice language, and sometimes even learn traditional dances. It's been really helpful to connect with others in similar situations.
+                        </div>
+                    </div>
+                    <div class="thread-item">
+                        <div class="thread-meta">
+                            <span>Michael T.</span>
+                            <span>1 day ago</span>
+                        </div>
+                        <div class="thread-content">
+                            I set aside time each week to learn something new about our culture - whether it's reading about our history, learning a new song, or practicing beadwork. Consistency is key!
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Scroll to active discussion
+            activeDiscussion.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Thread reply form submission
+        threadReplyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const replyContent = document.getElementById('replyContent').value;
+            const anonymous = document.getElementById('anonymousReply').checked;
+            
+            if (replyContent.trim() === '') return;
+            
+            addThreadReply(replyContent, anonymous);
+            
+            // Reset form
+            document.getElementById('replyContent').value = '';
+            document.getElementById('anonymousReply').checked = false;
+        });
+
+        function addThreadReply(content, anonymous) {
+            const threadItem = document.createElement('div');
+            threadItem.classList.add('thread-item');
+            
+            const author = anonymous ? 'Anonymous' : 'You';
+            const timestamp = 'Just now';
+            
+            threadItem.innerHTML = `
+                <div class="thread-meta">
+                    <span>${author}</span>
+                    <span>${timestamp}</span>
+                </div>
+                <div class="thread-content">
+                    ${content}
+                </div>
+            `;
+            
+            discussionThread.appendChild(threadItem);
+            discussionThread.scrollTop = discussionThread.scrollHeight;
+        }
 
         // Update footer based on current page
         function updateFooter() {
@@ -1655,13 +2044,21 @@
                 let response = "I'm here to help you learn about Maasai culture. How can I assist you today?";
                 
                 if (message.toLowerCase().includes('song') || message.toLowerCase().includes('music')) {
-                    response = "Maasai songs are an important part of our culture. They are used in ceremonies, storytelling, and daily life. Would you like to learn about a specific type of song?";
+                    response = "Maasai songs are an important part of our culture. They are used in ceremonies, storytelling, and daily life. The Esimen song is performed during ceremonies, while the Adumu is a famous jumping dance song. Would you like to learn about a specific type of song?";
                 } else if (message.toLowerCase().includes('story') || message.toLowerCase().includes('elder')) {
-                    response = "Oral storytelling is how Maasai history and values are passed down. Elders share wisdom through narratives that often feature animals and nature.";
+                    response = "Oral storytelling is how Maasai history and values are passed down. Elders share wisdom through narratives that often feature animals and nature. These stories teach important lessons about community, respect, and living in harmony with nature.";
                 } else if (message.toLowerCase().includes('ceremony') || message.toLowerCase().includes('eunoto') || message.toLowerCase().includes('enkipaata')) {
-                    response = "Maasai ceremonies mark important life transitions. Eunoto is the warrior graduation ceremony, and Enkipaata is the initiation for young boys.";
+                    response = "Maasai ceremonies mark important life transitions. Eunoto is the warrior graduation ceremony where Morans become junior elders. Enkipaata is the initiation ceremony for young boys. Other important ceremonies include Emuratare (circumcision) and Enkang oo-nkiri (marriage).";
                 } else if (message.toLowerCase().includes('bead') || message.toLowerCase().includes('jewelry')) {
-                    response = "Maasai beadwork is not just decorative - different colors and patterns communicate social status, age, and marital status.";
+                    response = "Maasai beadwork is not just decorative - different colors and patterns communicate social status, age, and marital status. Red symbolizes bravery, blue represents energy, and green signifies health and land. White beads are associated with purity and peace.";
+                } else if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
+                    response = "Hello! I'm here to help you explore Maasai culture. You can ask me about songs, ceremonies, traditions, or anything else you're curious about.";
+                } else if (message.toLowerCase().includes('greeting') || message.toLowerCase().includes('hello')) {
+                    response = "Traditional Maasai greetings are important cultural practices. 'Supa' is a common greeting among peers, while elders are greeted with more formal respect. Greetings often involve inquiries about family, livestock, and well-being.";
+                } else if (message.toLowerCase().includes('food') || message.toLowerCase().includes('eat')) {
+                    response = "Traditional Maasai diet consists mainly of meat, milk, and blood from cattle. Milk is often mixed with blood for special occasions. In modern times, maize and other grains have become more common in the Maasai diet.";
+                } else if (message.toLowerCase().includes('clothing') || message.toLowerCase().includes('wear')) {
+                    response = "Maasai are known for their distinctive red shukas (cloths) and elaborate beadwork. The color red is preferred as it symbolizes protection from wild animals and represents bravery. Both men and women wear beaded jewelry that indicates their social status.";
                 }
                 
                 addMessageToChat(response, 'bot');
@@ -1796,6 +2193,7 @@
                 </div>
                 <h3>${title}</h3>
                 <p>${content}</p>
+                <button class="btn-purple view-discussion-btn" style="margin-top: 10px;" data-discussion="new">View Discussion</button>
             `;
             
             discussionsContainer.appendChild(discussionDiv);
